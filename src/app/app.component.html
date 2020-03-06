@@ -1,0 +1,13 @@
+<kor-page>
+  <!-- app bar -->
+  <kor-app-bar slot="top" label="Kor Gaming" logo="./assets/favicon.png">
+    <kor-tabs>
+      <kor-tab-item label="Home" [active]="router.url == '/home'" (click)="router.navigateByUrl('/home')"></kor-tab-item>
+      <kor-tab-item label="Streams" [active]="router.url == '/streams'" (click)="router.navigateByUrl('/streams')"></kor-tab-item>
+      <kor-tab-item label="Clips" [active]="router.url == '/clips'" (click)="router.navigateByUrl('/clips')"></kor-tab-item>
+    </kor-tabs>
+    <kor-avatar slot="functions" label="John Doe" info="j.doe@email.com" image="https://images.generated.photos/SZ43KV-Oo26-wpPUM7zDLo19CpGFH0eBnjegQFtvaUc/rs:fit:512:512/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zLzA4/NTUzMzguanBn.jpg"></kor-avatar>
+  </kor-app-bar>
+  <!-- router outlet -->
+  <router-outlet></router-outlet>
+</kor-page>
