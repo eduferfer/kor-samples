@@ -1,1 +1,8 @@
-<p>streams works!</p>
+<kor-grid fit-content>
+  <kor-card grid-cols="4" *ngFor="let stream of twitch.streams"
+    [label]="stream.title"
+    [image]="getThumbnail(stream.thumbnail_url)">
+    <kor-tag icon="person" [label]="stream.viewer_count" slot="functions"></kor-tag>
+    {{stream.user_name}}
+  </kor-card>
+</kor-grid>

@@ -17,4 +17,10 @@ export class StreamsComponent implements OnInit {
     console.log(this.twitch.streams);
   }
 
+  public getThumbnail(raw: string): string {
+    let url: string;
+    url = raw.replace("{width}", "400").replace("{height}", "240");
+    return url;
+  }
+
 }

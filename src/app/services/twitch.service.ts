@@ -22,7 +22,7 @@ export class TwitchService {
 
   public getStreams(): void{
     this.http.get(`${this.baseUri}/streams`, this.httpOptions).subscribe((res) => {
-      this.streams = res;
+      this.streams = res.data;
     })
   }
 
