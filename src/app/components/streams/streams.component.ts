@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TwitchService } from 'src/app/services/twitch.service';
 
 @Component({
   selector: 'app-streams',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StreamsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private twitch: TwitchService
+  ) { }
 
   ngOnInit(): void {
+    this.twitch.getStreams();
+    console.log(this.twitch.streams);
   }
 
 }
