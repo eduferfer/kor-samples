@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { stringify } from 'querystring';
 
 @Injectable({
   providedIn: 'root'
@@ -14,16 +16,15 @@ export class TwitchService {
       'Client-ID': this.clientId
     })
   };
-  public streams: any;
 
   constructor(
     private http: HttpClient
   ) { }
 
-  public getStreams(): void{
-    this.http.get(`${this.baseUri}/streams`, this.httpOptions).subscribe((res) => {
-      this.streams = res.data;
-    })
+  public getStreams(filters: any): Observable<object> {
+    let filterString = stringify(filters);
+    console.log(stringify(filters))
+    return this.http.get(`${this.baseUri}/streams?${filterString}`, this.httpOptions);
   }
 
 }
