@@ -1,31 +1,25 @@
 <div class="title-wrapper">
+  <!-- title -->
   <kor-text size="header-1" class="page-title">Streams</kor-text>
 
   <!-- filters -->
-  <kor-input type="select" label="Games" [value]="filters.game_id ? filters.game_id : 'All'" (value-changed)="getStreams()">
-    <kor-menu-item label="All" 
-      [active]="!filters.game_id"
-      (click)="filters.game_id = undefined">
-    </kor-menu-item>
-    <kor-menu-item *ngFor="let game_id of games"
-      [label]="game_id" 
-      [active]="filters.game_id == game_id"
-      (click)="filters.game_id = game_id">
+  <kor-input type="select" label="Games">
+    <kor-menu-item *ngFor="let game of games"
+      [label]="game?.name" 
+      [active]="filters.game_id == game?.id"
+      (click)="filters.game_id = game?.id; getStreams()">
   </kor-menu-item>
   </kor-input>
-  <kor-input type="select" label="Languages" [value]="filters.language ? filters.language : 'All'" (value-changed)="getStreams()">
-    <kor-menu-item label="All" 
-      [active]="!filters.language"
-      (click)="filters.language = undefined">
-    </kor-menu-item>
+  <kor-input type="select" label="Languages">
     <kor-menu-item *ngFor="let language of languages" 
       [label]="language" 
       [active]="filters.language == language"
-      (click)="filters.language = language">
+      (click)="filters.language = language; getStreams()">
     </kor-menu-item>
   </kor-input>
 </div>
 
+<!-- grid -->
 <kor-grid fit-content>
   <kor-card grid-cols="3" grid-cols-m="4" grid-cols-s="6" *ngFor="let stream of streams"
     [label]="stream.title"

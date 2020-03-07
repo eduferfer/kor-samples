@@ -16,6 +16,7 @@ kor-grid,
 }
 .title-wrapper {
   display: flex;
+  align-items: center;
   margin: 16px auto 32px auto;
   > * + * {
     margin-left: 12px;

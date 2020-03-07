@@ -37,8 +37,22 @@ export class StreamsComponent implements OnInit {
 
   // push an entry to an array
   private pushEntry(array: string, entry: string): void {
-    let index = this[array].indexOf(entry);
-    if (index < 0) { this[array].push(entry); }
+    let duplicate: boolean;
+    if (array == "games") {
+      duplicate = this[array].find(el => el.id == entry);
+      // resolve and push games
+      if (!duplicate) {
+        this.twitch.getGame(entry).subscribe((res: any) => {
+          this[array].push(res.data[0]);
+        });
+      }
+    } else {
+      duplicate = this[array].indexOf(entry) > -1;
+      // push language
+      if (!duplicate) {
+        this[array].push(entry);
+      }
+    }
   }
 
   // get thumbnail url

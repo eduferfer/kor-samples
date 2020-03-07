@@ -27,4 +27,8 @@ export class TwitchService {
     return this.http.get(`${this.baseUri}/streams?${filterString}`, this.httpOptions);
   }
 
+  public getGame(id: string): any {
+    return this.http.get(`${this.baseUri}/games?id=${id}`, this.httpOptions);
+  }
+
 }
