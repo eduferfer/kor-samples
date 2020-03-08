@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { StreamsComponent } from './components/streams/streams.component';
 import { ClipsComponent } from './components/clips/clips.component';
+import { PlayerComponent } from './components/player/player.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     StreamsComponent,
-    ClipsComponent
+    ClipsComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,

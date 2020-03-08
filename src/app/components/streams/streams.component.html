@@ -21,7 +21,7 @@
 
 <!-- grid -->
 <kor-grid fit-content>
-  <kor-card grid-cols="3" grid-cols-m="4" grid-cols-s="6" *ngFor="let stream of streams"
+  <kor-card grid-cols="3" grid-cols-m="4" grid-cols-s="6" *ngFor="let stream of streams" (click)="openStream(stream.user_name)"
     [label]="stream.title"
     [image]="getThumbnail(stream.thumbnail_url)">
     <kor-tag icon="remove_red_eye" [label]="stream.viewer_count" slot="functions"></kor-tag>

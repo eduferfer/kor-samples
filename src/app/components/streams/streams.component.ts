@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TwitchService } from 'src/app/services/twitch.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-streams',
@@ -14,7 +15,8 @@ export class StreamsComponent implements OnInit {
   public filters: any = {}
 
   constructor(
-    public twitch: TwitchService
+    public twitch: TwitchService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -58,6 +60,11 @@ export class StreamsComponent implements OnInit {
   // get thumbnail url
   public getThumbnail(raw: string): string {
     return raw.replace("{width}", "400").replace("{height}", "240");
+  }
+
+  // open selected stream
+  public openStream(name: string): void {
+    this.router.navigateByUrl(`/streams/${name}`);
   }
 
 }
