@@ -9,7 +9,7 @@ import { PlayerComponent } from './components/player/player.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'streams',
     pathMatch: 'full'
   },
   {

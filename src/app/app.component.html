@@ -6,6 +6,7 @@
       <kor-tab-item label="Streams" [active]="router.url == '/streams'" (click)="router.navigateByUrl('/streams')"></kor-tab-item>
       <kor-tab-item label="Clips" [active]="router.url == '/clips'" (click)="router.navigateByUrl('/clips')"></kor-tab-item>
     </kor-tabs>
+    <kor-icon slot="functions" button icon="brightness_medium" (click)="switchTheme()"></kor-icon>
     <kor-avatar slot="functions" [label]="settings.user.name" [info]="settings.user.email" [image]="settings.user.imageUrl"></kor-avatar>
   </kor-app-bar>
   <!-- router outlet -->

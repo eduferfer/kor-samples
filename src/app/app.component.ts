@@ -9,10 +9,15 @@ import { SettingsService } from './services/settings.service';
 })
 export class AppComponent {
 
+  title = 'kor-gaming';
+
   constructor (
     public router: Router,
     public settings: SettingsService
   ) {}
 
-  title = 'kor-gaming';
+  public switchTheme(): void {
+    this.settings.theme = this.settings.theme == 'light' ? 'dark' : 'light';
+  }
+
 }
