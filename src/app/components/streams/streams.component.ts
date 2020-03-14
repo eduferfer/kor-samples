@@ -11,7 +11,6 @@ export class StreamsComponent implements OnInit {
 
   public streams: any;
   public languages: any[] = [];
-  public games: any[] = [];
   public filters: any = {}
 
   constructor(
@@ -32,28 +31,16 @@ export class StreamsComponent implements OnInit {
       // push language and game
       res.data.forEach(stream => {
         this.pushEntry("languages", stream.language);
-        this.pushEntry("games", stream.game_id);
       });
     });
   }
 
-  // push an entry to an array
+  // push an entry to an array if it is unique
   private pushEntry(array: string, entry: string): void {
     let duplicate: boolean;
-    if (array == "games") {
-      duplicate = this[array].find(el => el.id == entry);
-      // resolve and push games
-      if (!duplicate) {
-        this.twitch.getGame(entry).subscribe((res: any) => {
-          this[array].push(res.data[0]);
-        });
-      }
-    } else {
-      duplicate = this[array].indexOf(entry) > -1;
-      // push language
-      if (!duplicate) {
-        this[array].push(entry);
-      }
+    duplicate = this[array].indexOf(entry) > -1;
+    if (!duplicate) {
+      this[array].push(entry);
     }
   }
 

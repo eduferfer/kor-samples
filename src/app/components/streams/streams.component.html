@@ -3,17 +3,9 @@
   <kor-text size="header-1" class="page-title">Streams</kor-text>
 
   <!-- filters -->
-  <kor-input type="select" label="Games">
-    <kor-menu-item *ngFor="let game of games"
-      [label]="game?.name" 
-      [active]="filters.game_id == game?.id"
-      (click)="filters.game_id = game?.id; getStreams()">
-  </kor-menu-item>
-  </kor-input>
-  <kor-input type="select" label="Languages">
+  <kor-input type="select" label="Languages" [value]="filters.language">
     <kor-menu-item *ngFor="let language of languages" 
       [label]="language" 
-      [active]="filters.language == language"
       (click)="filters.language = language; getStreams()">
     </kor-menu-item>
   </kor-input>
