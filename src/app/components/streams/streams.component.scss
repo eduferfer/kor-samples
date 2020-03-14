@@ -30,7 +30,14 @@ kor-grid,
     flex: 1;
   }
 }
-kor-tag[slot="functions"] {
-  padding: 0px;
-  border: none;
+kor-card {
+  cursor: pointer;
+  transition: .1s all ease-in-out;
+  &:hover {
+    transform: translateY(-2px);
+  }
+  kor-tag[slot="functions"] {
+    padding: 0px;
+    border: none;
+  }
 }

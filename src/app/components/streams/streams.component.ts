@@ -50,8 +50,11 @@ export class StreamsComponent implements OnInit {
   }
 
   // open selected stream
-  public openStream(name: string): void {
-    this.router.navigateByUrl(`/streams/${name}`);
+  public openStream(id: string): void {
+    // get user login and open stream page
+    this.twitch.getUser(id).subscribe((res: any) => {
+      this.router.navigateByUrl(`/streams/${res.data[0].login}`);
+    });
   }
 
 }
