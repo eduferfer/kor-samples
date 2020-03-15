@@ -45,4 +45,9 @@ export class SpotifyService {
   public getFeaturedPlaylists(): Observable<ArrayBuffer> {
     return this.http.get(`${this.baseUri}/browse/featured-playlists`, this.httpOptions);
   }
+
+  // get album details
+  public getAlbumById(id: string): Observable<ArrayBuffer> {
+    return this.http.get(`${this.baseUri}/albums/${id}`, this.httpOptions);
+  }
 }

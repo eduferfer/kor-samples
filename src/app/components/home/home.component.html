@@ -2,7 +2,7 @@
 <kor-text size="header-1">New Releases</kor-text>
 <div class="carousel">
   <ng-container *ngFor="let rel of newReleases">
-    <kor-card [image]="rel.images[1].url">
+    <kor-card [image]="rel.images[1].url" (click)="router.navigateByUrl('/album/' + rel.id)">
       <kor-text size="header-2">{{rel.name}}</kor-text>
       <kor-text>
         <ng-container *ngFor="let art of rel.artists, index as i">

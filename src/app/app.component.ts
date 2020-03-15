@@ -24,19 +24,13 @@ export class AppComponent implements OnInit {
   }
 
   public getPageLabel(): string {
-    let label: string, url: string;
-    url = this.router.url;
-    switch (url) {
+    switch (this.router.url) {
       case '/home':
-        label = 'Home';
-        break;
+        return 'Home';
       case '/artists':
-        label = 'Artists';
-        break;
+        return 'Artists';
       case '/search':
-        label = 'Search';
-        break;
+        return 'Search';
     }
-    return label;
   }
 }

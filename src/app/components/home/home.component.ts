@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SpotifyService } from '../services/spotify.service';
+import { SpotifyService } from '../../services/spotify.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,7 @@ export class HomeComponent implements OnInit {
   public featuredPlaylists: any;
 
   constructor(
+    public router: Router,
     public spotify: SpotifyService
   ) { }
 
@@ -22,7 +24,7 @@ export class HomeComponent implements OnInit {
     })
     this.spotify.getFeaturedPlaylists().subscribe((res: any) => {
       this.featuredPlaylists = res.playlists.items;
-      console.log(res);
+      console.log(this.featuredPlaylists);
     })
   }
 

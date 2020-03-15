@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
+import { AlbumComponent } from './components/album/album.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,15 @@ const routes: Routes = [
   {
     path: 'search',
     component: SearchComponent
+  },
+  {
+    path: 'album',
+    children: [
+      {
+        path: ':id',
+        component: AlbumComponent
+      }
+    ]
   }
 ];
 

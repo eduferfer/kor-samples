@@ -1,6 +1,7 @@
 <kor-page [theme]="settings.theme">
   <kor-app-bar slot="top" mobile [label]="getPageLabel()">
     <kor-icon slot="left" button icon="menu" *ngIf="router.url.split('/').length < 3"></kor-icon>
+    <kor-icon slot="left" button icon="arrow_back" *ngIf="router.url.split('/').length > 2" (click)="router.navigateByUrl('/home')"></kor-icon>
   </kor-app-bar>
   <!-- outlet for pages -->
   <router-outlet></router-outlet>
