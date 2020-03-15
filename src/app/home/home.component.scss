@@ -1,0 +1,35 @@
+:host {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: calc(100% + 32px);
+  width: calc(100% + 32px);
+  padding: 16px;
+  margin: -16px;
+  > * + * {
+    margin-top: 12px;
+  }
+  .carousel {
+    width: calc(100% + 32px);
+    padding: 0 16px;
+    margin-left: -16px;
+    margin-right: -16px;
+    overflow: auto;
+    display: flex;
+    box-sizing: border-box;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    kor-card {
+      + * {
+        margin-left: 12px;
+      }
+      min-width: 120px;
+      kor-text {
+        line-height: 16px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class SpotifyService {
   private clientId: string = "2d8a78fc91d64871ad97afcae5a79e4f";
   private clientSecret: string = "33c8dee25fd14368bfc7bd0bd225f2cb";
   public authorized: boolean = false;
-
+  // http variables
   private baseUri: string = "https://api.spotify.com/v1";
   public httpOptions: any = { 
     headers: new HttpHeaders()
@@ -35,9 +36,8 @@ export class SpotifyService {
     })
   }
 
-  public getLatestReleases(): void {
-    this.http.get(`${this.baseUri}/search?type=artist&q=djonga`, this.httpOptions).subscribe(res => {
-      console.log(res);
-    })
+  // get new releases
+  public getNewReleases(): Observable<ArrayBuffer> {
+    return this.http.get(`${this.baseUri}/browse/new-releases`, this.httpOptions);
   }
 }

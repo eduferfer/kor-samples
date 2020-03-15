@@ -1,1 +1,15 @@
-<kor-empty-state label="Home works!"></kor-empty-state>
+<!-- new releases -->
+<kor-text size="header-1">New Releases</kor-text>
+<div class="carousel">
+  <ng-container *ngFor="let rel of newReleases">
+    <kor-card [image]="rel.images[1].url">
+      <kor-text size="header-2" slot="header">{{rel.name}}</kor-text>
+      <kor-text>
+        <ng-container *ngFor="let art of rel.artists, index as i">
+          <ng-container *ngIf="i !== 0">, </ng-container>
+          {{art.name}}
+        </ng-container>
+      </kor-text>
+    </kor-card>
+  </ng-container>
+</div>
