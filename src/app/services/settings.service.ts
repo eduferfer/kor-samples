@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class SettingsService {
 
-  public theme: string = "light";
+  public theme: string = "dark";
   public user: any = {
     "name": "John Doe",
     "email": "john.doe@email.com",
