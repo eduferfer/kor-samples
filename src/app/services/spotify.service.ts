@@ -14,7 +14,7 @@ export class SpotifyService {
   public authorized: boolean = false;
   // http variables
   private baseUri: string = "https://api.spotify.com/v1";
-  public httpOptions: any = { 
+  public httpOptions: any = {
     headers: new HttpHeaders()
   }
 
@@ -25,9 +25,9 @@ export class SpotifyService {
   public auth(): void {
     // define auth headers
     let headers = new HttpHeaders({
-        "Authorization": "Basic " + btoa(this.clientId + ":" + this.clientSecret),
-        "Content-Type": "application/x-www-form-urlencoded"
-      });
+      "Authorization": "Basic " + btoa(this.clientId + ":" + this.clientSecret),
+      "Content-Type": "application/x-www-form-urlencoded"
+    });
     // do the post
     this.http.post(`${this.authUri}`, "grant_type=client_credentials", { headers }).subscribe((res: any) => {
       console.log(res);
@@ -39,5 +39,10 @@ export class SpotifyService {
   // get new releases
   public getNewReleases(): Observable<ArrayBuffer> {
     return this.http.get(`${this.baseUri}/browse/new-releases`, this.httpOptions);
+  }
+
+  // get new releases
+  public getFeaturedPlaylists(): Observable<ArrayBuffer> {
+    return this.http.get(`${this.baseUri}/browse/featured-playlists`, this.httpOptions);
   }
 }

@@ -9,6 +9,7 @@ import { SpotifyService } from '../services/spotify.service';
 export class HomeComponent implements OnInit {
 
   public newReleases: any;
+  public featuredPlaylists: any;
 
   constructor(
     public spotify: SpotifyService
@@ -18,6 +19,10 @@ export class HomeComponent implements OnInit {
     this.spotify.getNewReleases().subscribe((res: any) => {
       this.newReleases = res.albums.items;
       console.log(this.newReleases);
+    })
+    this.spotify.getFeaturedPlaylists().subscribe((res: any) => {
+      this.featuredPlaylists = res.playlists.items;
+      console.log(res);
     })
   }
 
