@@ -14,9 +14,7 @@ export class SpotifyService {
 
   private baseUri: string = "https://api.spotify.com/v1";
   public httpOptions: any = { 
-    headers: new HttpHeaders({
-      "Authorization": ""
-    })
+    headers: new HttpHeaders()
   }
 
   constructor(
@@ -32,13 +30,13 @@ export class SpotifyService {
     // do the post
     this.http.post(`${this.authUri}`, "grant_type=client_credentials", { headers }).subscribe((res: any) => {
       console.log(res);
-      this.httpOptions.headers.set("Authorization", "Bearer " + res.access_token);
+      this.httpOptions.headers = this.httpOptions.headers.set("Authorization", "Bearer " + res.access_token);
       this.authorized = true;
     })
   }
 
-  public getAlbums(): void {
-    this.http.get(`${this.baseUri}/albums/6akEvsycLGftJxYudPjmqK`, this.httpOptions).subscribe(res => {
+  public getLatestReleases(): void {
+    this.http.get(`${this.baseUri}/search?type=artist&q=djonga`, this.httpOptions).subscribe(res => {
       console.log(res);
     })
   }

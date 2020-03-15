@@ -33,8 +33,8 @@ export class AppComponent implements OnInit {
       case '/artists':
         label = 'Artists';
         break;
-      case '/albums':
-        label = 'Albums';
+      case '/search':
+        label = 'Search';
         break;
     }
     return label;

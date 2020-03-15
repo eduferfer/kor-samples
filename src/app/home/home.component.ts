@@ -10,7 +10,6 @@ import { SpotifyService } from '../services/spotify.service';
 export class HomeComponent implements OnInit {
 
   constructor(
-    public router: Router,
     public spotify: SpotifyService
   ) { }
 
