@@ -18,11 +18,12 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (!this.spotify.authorized) {
-      this.spotify.auth();
-    }
+    // authenticate on load and redirect to home
+    this.router.navigateByUrl('/search')
+    this.spotify.auth().then(() => this.router.navigateByUrl('/'));
   }
 
+  // get app bar label depending on activated route
   public getPageLabel(): string {
     switch (this.router.url) {
       case '/home':

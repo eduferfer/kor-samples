@@ -11,7 +11,6 @@ export class SpotifyService {
   private authUri: string = "https://accounts.spotify.com/api/token";
   private clientId: string = "2d8a78fc91d64871ad97afcae5a79e4f";
   private clientSecret: string = "33c8dee25fd14368bfc7bd0bd225f2cb";
-  public authorized: boolean = false;
   // http variables
   private baseUri: string = "https://api.spotify.com/v1";
   public httpOptions: any = {
@@ -20,19 +19,21 @@ export class SpotifyService {
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) {}
 
-  public auth(): void {
-    // define auth headers
-    let headers = new HttpHeaders({
-      "Authorization": "Basic " + btoa(this.clientId + ":" + this.clientSecret),
-      "Content-Type": "application/x-www-form-urlencoded"
-    });
-    // do the post
-    this.http.post(`${this.authUri}`, "grant_type=client_credentials", { headers }).subscribe((res: any) => {
-      console.log(res);
-      this.httpOptions.headers = this.httpOptions.headers.set("Authorization", "Bearer " + res.access_token);
-      this.authorized = true;
+  public async auth(): Promise<any> {
+    return new Promise(resolve => {
+      // define auth headers
+      let headers = new HttpHeaders({
+        "Authorization": "Basic " + btoa(this.clientId + ":" + this.clientSecret),
+        "Content-Type": "application/x-www-form-urlencoded"
+      });
+      // do the post
+      this.http.post(`${this.authUri}`, "grant_type=client_credentials", { headers }).subscribe((res: any) => {
+        console.log(res);
+        this.httpOptions.headers = this.httpOptions.headers.set("Authorization", "Bearer " + res.access_token);
+        resolve('authorized')
+      })
     })
   }
 
